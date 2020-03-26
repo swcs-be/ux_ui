@@ -21,8 +21,9 @@ deploy:
   dependencies:
     - build:css
   script:
-    - ls ./dist/
-    - ls /
+#    - ls ./dist/
+#    - ls /
+    - ls /home/
 #    - mkdir /home/web/
 #    - mkdir /home/web/cdn/
 #    - mkdir /home/web/cdn/$CI_BUILD_REF/
