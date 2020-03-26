@@ -22,6 +22,8 @@ deploy:
     - build:css
   script:
     - ls ./css/
+    - mkdir /home/web/
+    - mkdir /home/web/cdn/
     - mkdir /home/web/cdn/$CI_BUILD_REF/
     - rm /home/web/cdn/latest/
     - mkdir /home/web/cdn/latest/
