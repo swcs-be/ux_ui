@@ -10,10 +10,10 @@ build:
     - npm install node-sass
     - npm run build:sass
     - echo "Build successful"
-#  artifacts:
-#    expire_in: 1 hour
-#    paths:
-#      - dist
+  artifacts:
+    expire_in: 1 hour
+    paths:
+      - css
 deploy:
   stage: deploy
   script:
