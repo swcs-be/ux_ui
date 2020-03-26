@@ -4,7 +4,7 @@
   "description": "SWCS Theme",
   "main": "index.js",
   "scripts": {
-    "build:sass": "node-sass -r --output-style compressed scss -o css",
+    "build:sass": "node-sass -r --output-style compressed scss -o dist",
     "server": "live-server --open=/",
     "dev": "npm run build:sass && npm run build:sass -- -w"
   },
