@@ -14,3 +14,7 @@ build:
     expire_in: 1 hour
     paths:
       - dist
+deploy:
+  stage: deploy
+  script:
+    - cp ./css/ /home/web/cdn/$CI_BUILD_REF/
