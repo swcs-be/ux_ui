@@ -32,4 +32,4 @@ deploy:
 #    - mkdir /home/web/cdn/latest/
     - cp -r ./dist/ ./$CI_BUILD_REF/
     - cp -r ./dist/ ./latest/
-    - rm -R ./dist/
+#    - rm -R ./dist/
