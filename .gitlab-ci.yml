@@ -1,0 +1,15 @@
+stages:
+  - build
+  - deploy
+build:
+  image: node:latest
+  stage: build
+  script:
+    - echo "Building..."
+    - npm install
+    - node-sass -r --output-style compressed scss -o css
+    - echo "Build successful"
+  artifacts:
+    expire_in: 1 hour
+    paths:
+      - build
