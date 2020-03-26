@@ -32,8 +32,8 @@ deploy:
     #    - mkdir /home/web/cdn/$CI_BUILD_REF/
     #    - mkdir -p /home/web/cdn/latest/
     #    - rm /home/web/cdn/latest/ -R
-    - mkdir /builds/$CI_BUILD_REF/
-    - mkdir /builds/latest/
+    - mkdir -p /builds/$CI_BUILD_REF/
+    - mkdir -p /builds/latest/
     - cp -r ./dist/ /builds/$CI_BUILD_REF/
     - cp -r ./dist/ /builds/latest/
 #    - rm -R ./dist/
