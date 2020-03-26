@@ -7,8 +7,8 @@ build:
   script:
     - echo "Building..."
     - npm install
-    - npm install -g node-sass
-    - node-sass -r --output-style compressed scss -o css
+    - npm install node-sass
+    - npm run build:sass
     - echo "Build successful"
   artifacts:
     expire_in: 1 hour
