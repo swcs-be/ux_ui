@@ -7,7 +7,7 @@ build:
   script:
     - echo "Building..."
     - npm install
-    - sudo npm install -g node-sass
+    - npm install -g node-sass
     - node-sass -r --output-style compressed scss -o css
     - echo "Build successful"
   artifacts:
