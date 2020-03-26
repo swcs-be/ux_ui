@@ -21,15 +21,16 @@ deploy:
   dependencies:
     - build:css
   script:
-#    - ls ./dist/
-#    - ls /
+    - ls ./dist/
+    - ls /builds/
 #    - ls /home/
 #    - mkdir /home/web/
 #    - mkdir /home/web/cdn/
 #    - mkdir /home/web/cdn/$CI_BUILD_REF/
 #    - mkdir -p /home/web/cdn/latest/
 #    - rm /home/web/cdn/latest/ -R
-#    - mkdir /home/web/cdn/latest/
-    - cp -r ./dist/ ./$CI_BUILD_REF/
-    - cp -r ./dist/ ./latest/
+    - mkdir /builds/$CI_BUILD_REF/
+    - mkdir /builds/latest/
+    - cp -r ./dist/ /builds/$CI_BUILD_REF/
+    - cp -r ./dist/ /builds/latest/
 #    - rm -R ./dist/
