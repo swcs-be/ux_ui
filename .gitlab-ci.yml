@@ -18,15 +18,30 @@ build:css:
       - dist
 deploy:
   stage: deploy
-  include: 'https://gitlab.com/x4v13r/gitlab-ci/raw/master/ssh.yml'
+  before_script:
+    ## Install ssh-agent if not already installed, it is required by Docker.
+    - 'which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y )'
+
+    ## Run ssh-agent (inside the build environment)
+    - eval $(ssh-agent -s)
+
+    ## Add the SSH key stored in SSH_PRIVATE_KEY variable to the agent store
+    - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add -
+
+    ## Create the SSH directory and give it the right permissions
+    - mkdir -p ~/.ssh
+    - chmod 700 ~/.ssh
+
   dependencies:
     - build:css
 #    - echo "the project directory is - $CI_PROJECT_DIR"
 #    - echo "Where am I? - $PWD"
     - ls ./dist/
 #    - ls /builds/
-#    - mkdir -p /builds/$CI_BUILD_REF/
-#    - mkdir -p /builds/latest/
-#    - cp -r ./dist/ /builds/$CI_BUILD_REF/
-#    - cp -r ./dist/ /builds/latest/
-    - ssh_run "deployer" "164.132.103.245:22" "$SSH_PRIVATE_KEY" "ls ./; cp -r ./dist/ /uxui/"
+    - mkdir -p /builds/$CI_BUILD_REF/
+    - mkdir -p /builds/latest/
+    - cp -r ./dist/ /builds/$CI_BUILD_REF/
+    - cp -r ./dist/ /builds/latest/
+    - scp -r deployer@164.132.103.245:/uxui/ /builds/$CI_BUILD_REF/
+    - scp -r deployer@164.132.103.245:/uxui/ /builds/latest/
+#    - ssh_run "deployer" "164.132.103.245:22" "$SSH_PRIVATE_KEY" "ls ./; cp -r ./dist/ /uxui/"
