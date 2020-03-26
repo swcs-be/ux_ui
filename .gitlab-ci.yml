@@ -15,14 +15,14 @@ build:css:
     name: cssToDeploy
     when: on_success
     paths:
-      - css
+      - dist
 deploy:
   stage: deploy
   dependencies:
     - build:css
   script:
-    - ls ./css/
-    - ls /home/
+    - ls ./dist/
+    - ls /
 #    - mkdir /home/web/
 #    - mkdir /home/web/cdn/
 #    - mkdir /home/web/cdn/$CI_BUILD_REF/
