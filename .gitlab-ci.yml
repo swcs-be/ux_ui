@@ -22,10 +22,7 @@ deploy:
   dependencies:
     - build:css
   volumes:
-    name: build_volume
-    path: /builds/
-    mode: rw
-    persist: true
+    - builds/:builds/ ro|rw persist
   script:
     - echo "the project directory is - $CI_PROJECT_DIR"
     - echo "Where am I? - $PWD"
