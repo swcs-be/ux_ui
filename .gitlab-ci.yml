@@ -21,14 +21,17 @@ deploy:
   dependencies:
     - build:css
   script:
+    - echo "the project directory is - $CI_PROJECT_DIR"
+    - cat $CI_PROJECT_DIR/README.md ; echo
+    - echo "and where am I? - $PWD"
     - ls ./dist/
     - ls /builds/
-#    - ls /home/
-#    - mkdir /home/web/
-#    - mkdir /home/web/cdn/
-#    - mkdir /home/web/cdn/$CI_BUILD_REF/
-#    - mkdir -p /home/web/cdn/latest/
-#    - rm /home/web/cdn/latest/ -R
+    #    - ls /home/
+    #    - mkdir /home/web/
+    #    - mkdir /home/web/cdn/
+    #    - mkdir /home/web/cdn/$CI_BUILD_REF/
+    #    - mkdir -p /home/web/cdn/latest/
+    #    - rm /home/web/cdn/latest/ -R
     - mkdir /builds/$CI_BUILD_REF/
     - mkdir /builds/latest/
     - cp -r ./dist/ /builds/$CI_BUILD_REF/
