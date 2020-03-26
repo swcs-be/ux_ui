@@ -21,4 +21,5 @@ deploy:
   dependencies:
     - build:css
   script:
+    - ls ./css/
     - cp ./css/ /home/web/cdn/$CI_BUILD_REF/
