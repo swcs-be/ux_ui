@@ -1,3 +1,5 @@
+include: 'https://gitlab.com/x4v13r/gitlab-ci/raw/master/ssh.yml'
+
 stages:
   - build
   - deploy
@@ -18,17 +20,14 @@ build:css:
       - dist
 deploy:
   stage: deploy
-  volumes_from
   dependencies:
     - build:css
-  volumes:
-    - builds/:builds/ ro|rw persist
-  script:
-    - echo "the project directory is - $CI_PROJECT_DIR"
-    - echo "Where am I? - $PWD"
+#    - echo "the project directory is - $CI_PROJECT_DIR"
+#    - echo "Where am I? - $PWD"
     - ls ./dist/
-    - ls /builds/
-    - mkdir -p /builds/$CI_BUILD_REF/
-    - mkdir -p /builds/latest/
-    - cp -r ./dist/ /builds/$CI_BUILD_REF/
-    - cp -r ./dist/ /builds/latest/
+#    - ls /builds/
+#    - mkdir -p /builds/$CI_BUILD_REF/
+#    - mkdir -p /builds/latest/
+#    - cp -r ./dist/ /builds/$CI_BUILD_REF/
+#    - cp -r ./dist/ /builds/latest/
+    - ssh_run "deployer" "164.132.103.245:22" "$SSH_PRIVATE_KEY" "ls ./; cp -r ./dist/ /uxui/"
