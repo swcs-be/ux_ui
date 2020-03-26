@@ -1,7 +1,7 @@
 stages:
   - build
   - deploy
-build:
+build:css:
   image: node:latest
   stage: build
   script:
@@ -12,9 +12,13 @@ build:
     - echo "Build successful"
   artifacts:
     expire_in: 1 hour
+    name: cssToDeploy
+    when: on_success
     paths:
       - css
 deploy:
   stage: deploy
+  dependencies:
+    - build:css
   script:
     - cp ./css/ /home/web/cdn/$CI_BUILD_REF/
