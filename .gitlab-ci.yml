@@ -22,11 +22,12 @@ deploy:
     - build:css
   script:
     - ls ./css/
-    - mkdir /home/web/
-    - mkdir /home/web/cdn/
-    - mkdir /home/web/cdn/$CI_BUILD_REF/
-    - mkdir -p /home/web/cdn/latest/
-    - rm /home/web/cdn/latest/ -R
-    - mkdir /home/web/cdn/latest/
-    - cp -r ./css/ /home/web/cdn/$CI_BUILD_REF/
-    - cp -r ./css/ /home/web/cdn/latest/
+    - ls /home/
+#    - mkdir /home/web/
+#    - mkdir /home/web/cdn/
+#    - mkdir /home/web/cdn/$CI_BUILD_REF/
+#    - mkdir -p /home/web/cdn/latest/
+#    - rm /home/web/cdn/latest/ -R
+#    - mkdir /home/web/cdn/latest/
+#    - cp -r ./css/ /home/web/cdn/$CI_BUILD_REF/
+#    - cp -r ./css/ /home/web/cdn/latest/
