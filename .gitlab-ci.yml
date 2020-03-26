@@ -21,23 +21,21 @@ deploy:
   before_script:
     ## Install ssh-agent if not already installed, it is required by Docker.
     - 'which ssh-agent || ( apt-get update -y && apt-get install openssh-client -y )'
-
     ## Run ssh-agent (inside the build environment)
     - eval $(ssh-agent -s)
-
     ## Add the SSH key stored in SSH_PRIVATE_KEY variable to the agent store
     - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add -
-
     ## Create the SSH directory and give it the right permissions
     - mkdir -p ~/.ssh
     - chmod 700 ~/.ssh
 
   dependencies:
     - build:css
-#    - echo "the project directory is - $CI_PROJECT_DIR"
-#    - echo "Where am I? - $PWD"
+  script:
+    #    - echo "the project directory is - $CI_PROJECT_DIR"
+    #    - echo "Where am I? - $PWD"
     - ls ./dist/
-#    - ls /builds/
+    #    - ls /builds/
     - mkdir -p /builds/$CI_BUILD_REF/
     - mkdir -p /builds/latest/
     - cp -r ./dist/ /builds/$CI_BUILD_REF/
