@@ -18,8 +18,14 @@ build:css:
       - dist
 deploy:
   stage: deploy
+  volumes_from
   dependencies:
     - build:css
+  volumes:
+    name: build_volume
+    path: /builds/
+    mode: rw
+    persist: true
   script:
     - echo "the project directory is - $CI_PROJECT_DIR"
     - echo "Where am I? - $PWD"
