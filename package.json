@@ -1,0 +1,17 @@
+{
+  "name": "documentation_ui_ux",
+  "version": "1.0.0",
+  "description": "SWCS Theme",
+  "main": "index.js",
+  "scripts": {
+    "build:sass": "node-sass -r --output-style compressed scss -o css",
+    "server": "live-server --open=/",
+    "dev": "npm run build:sass && npm run build:sass -- -w"
+  },
+  "author": "NNI",
+  "license": "ISC",
+  "dependencies": {
+    "holderjs": "^2.9.6",
+    "node-sass": "^4.11.0"
+  }
+}

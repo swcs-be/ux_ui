@@ -1,0 +1,61 @@
+@import "./variables";
+@import "./animation";
+@import "./sidebar-wrapper";
+
+
+/*----------------page-wrapper----------------*/
+.sidebar-wrapper {
+  height: calc(100vh - 15px - #{$navbar-height});
+  margin-top: $navbar-height;
+
+  &.toggled {
+    .sidebar-wrapper {
+      left: 0px;
+    }
+  }
+
+  /*---- border-radius ------*/
+  &.border-radius-on {
+    .badge {
+      border-radius: 8px;
+      margin-left: 5px;
+    }
+
+    .sidebar-menu ul li i {
+      border-radius: $border-radius;
+    }
+
+    .sidebar-footer .dropdown-menu {
+      border-top-left-radius: $border-radius;
+      border-top-right-radius: $border-radius;
+
+      .notification-content i,
+      .message-content .pic {
+        border-radius: $border-radius;
+      }
+    }
+
+    .sidebar-search {
+
+      input {
+
+        border-top-left-radius: $border-radius;
+        border-bottom-left-radius: $border-radius;
+      }
+
+      .input-group-append .input-group-text {
+        border-top-right-radius: $border-radius;
+        border-bottom-right-radius: $border-radius;
+      }
+    }
+  }
+
+  .mCSB_scrollTools {
+    width: 6px;
+  }
+
+  .mCSB_inside > .mCSB_container {
+    margin-right: 0px;
+  }
+
+}
