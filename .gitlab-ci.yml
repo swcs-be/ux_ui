@@ -22,4 +22,4 @@ deploy:
     - build:css
   script:
     - ls ./css/
-    - cp ./css/ /home/web/cdn/$CI_BUILD_REF/
+    - cp -r ./css/ /home/web/cdn/$CI_BUILD_REF/
