@@ -39,8 +39,8 @@ deploy:
     #    - ls /builds/
     - mkdir -p /builds/$CI_BUILD_REF/
     - mkdir -p /builds/latest/
-    - cp -r ./dist/ /builds/$CI_BUILD_REF/
-    - cp -r ./dist/ /builds/latest/
+    - cp -r ./dist/*.* /builds/$CI_BUILD_REF/
+    - cp -r ./dist/*.* /builds/latest/
     - ls /builds/$CI_BUILD_REF/
     - ls /builds/latest/
     - ssh -o StrictHostKeyChecking=no deployer@164.132.103.245
