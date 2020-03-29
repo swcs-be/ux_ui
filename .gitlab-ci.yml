@@ -40,7 +40,7 @@ deploy:
 
 #- rm -R /builds/$CI_BUILD_REF/
     - mkdir -p /builds/deployer/
-    - rm -R /builds/deployer/*
+    - rm -Rf /builds/deployer/*
     - mkdir -p /builds/deployer/$CI_BUILD_REF/
     - mkdir -p /builds/deployer/latest/
     - ls ./dist/
