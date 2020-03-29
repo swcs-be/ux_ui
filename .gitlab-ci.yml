@@ -35,15 +35,18 @@ deploy:
   script:
     #    - echo "the project directory is - $CI_PROJECT_DIR"
     #    - echo "Where am I? - $PWD"
-    - ls ./dist/
+
     - ls /builds/
-    - rm -R /builds/*
+
 #- rm -R /builds/$CI_BUILD_REF/
 #  - rm -R /builds/latest/
-    - mkdir -p /builds/$CI_BUILD_REF/
-    - mkdir -p /builds/latest/
-    - cp -r ./dist/* /builds/$CI_BUILD_REF/
-    - cp -r ./dist/* /builds/latest/
+    - mkdir -p /builds/deployer/
+    - rm -R /builds/deployer/*
+    - mkdir -p /builds/deployer/$CI_BUILD_REF/
+    - mkdir -p /builds/deployer/latest/
+    - ls ./dist/
+    - cp -r ./dist/* /builds/deployer/$CI_BUILD_REF/
+    - cp -r ./dist/* /builds/deployer/latest/
     - ls /builds/$CI_BUILD_REF/
     - ls /builds/latest/
     - ssh -o StrictHostKeyChecking=no deployer@164.132.103.245 "rm -R /home/deployer/uxui/latest/"
