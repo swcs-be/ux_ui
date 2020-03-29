@@ -46,9 +46,9 @@ deploy:
     - ls ./dist/
     - cp -r ./dist/* /builds/deployer/$CI_BUILD_REF/
     - cp -r ./dist/* /builds/deployer/latest/
-    - ls /builds/$CI_BUILD_REF/
-    - ls /builds/latest/
-    - ssh -o StrictHostKeyChecking=no deployer@164.132.103.245 "rm -R /home/deployer/uxui/latest/"
-    - scp -r /builds/$CI_BUILD_REF deployer@164.132.103.245:/home/deployer/uxui
-    - scp -r /builds/latest deployer@164.132.103.245:/home/deployer/uxui
+    - ls /builds/deployer/$CI_BUILD_REF/
+    - ls /builds/deployer/latest/
+    - ssh -o StrictHostKeyChecking=no deployer@164.132.103.245 "rm -Rf /home/deployer/uxui/latest/"
+    - scp -r /builds/deployer/$CI_BUILD_REF deployer@164.132.103.245:/home/deployer/uxui
+    - scp -r /builds/deployer/latest deployer@164.132.103.245:/home/deployer/uxui
 #    - ssh_run "deployer" "164.132.103.245:22" "$SSH_PRIVATE_KEY" "ls ./; cp -r ./dist/ /uxui/"
