@@ -39,7 +39,6 @@ deploy:
     - ls /builds/
 
 #- rm -R /builds/$CI_BUILD_REF/
-#  - rm -R /builds/latest/
     - mkdir -p /builds/deployer/
     - rm -R /builds/deployer/*
     - mkdir -p /builds/deployer/$CI_BUILD_REF/
