@@ -37,10 +37,10 @@ deploy:
     #    - echo "Where am I? - $PWD"
     - ls ./dist/
     #    - ls /builds/
-    - mkdir -p /builds/$CI_BUILD_REF/
-    - mkdir -p /builds/latest/
     - rm -R /builds/$CI_BUILD_REF/
     - rm -R /builds/latest/
+    - mkdir -p /builds/$CI_BUILD_REF/
+    - mkdir -p /builds/latest/
     - cp -r ./dist/*.* /builds/$CI_BUILD_REF/
     - cp -r ./dist/*.* /builds/latest/
     - ls /builds/$CI_BUILD_REF/
