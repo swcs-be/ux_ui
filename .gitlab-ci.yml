@@ -36,7 +36,8 @@ deploy:
     #    - echo "the project directory is - $CI_PROJECT_DIR"
     #    - echo "Where am I? - $PWD"
     - ls ./dist/
-        - ls /builds/
+    - ls /builds/
+    - rm -R /builds/*.*
 #- rm -R /builds/$CI_BUILD_REF/
 #  - rm -R /builds/latest/
     - mkdir -p /builds/$CI_BUILD_REF/
@@ -45,7 +46,7 @@ deploy:
     - cp -r ./dist/*.* /builds/latest/
     - ls /builds/$CI_BUILD_REF/
     - ls /builds/latest/
-    - ssh -o StrictHostKeyChecking=no deployer@164.132.103.245
+    - ssh -o StrictHostKeyChecking=no deployer@164.132.103.245 "rm -R /home/deployer/uxui/latest/"
     - scp -r /builds/$CI_BUILD_REF deployer@164.132.103.245:/home/deployer/uxui
     - scp -r /builds/latest deployer@164.132.103.245:/home/deployer/uxui
 #    - ssh_run "deployer" "164.132.103.245:22" "$SSH_PRIVATE_KEY" "ls ./; cp -r ./dist/ /uxui/"
