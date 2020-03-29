@@ -42,6 +42,6 @@ deploy:
     - cp -r ./dist/ /builds/$CI_BUILD_REF/
     - cp -r ./dist/ /builds/latest/
     - ssh -o StrictHostKeyChecking=no deployer@164.132.103.245
-    - scp -i "$SSH_PRIVATE_KEY" -r deployer@164.132.103.245:/uxui/ /builds/$CI_BUILD_REF/
-    - scp -i "$SSH_PRIVATE_KEY" -r deployer@164.132.103.245:/uxui/ /builds/latest/
+    - scp -r deployer@164.132.103.245:/uxui/ /builds/$CI_BUILD_REF/
+    - scp -r deployer@164.132.103.245:/uxui/ /builds/latest/
 #    - ssh_run "deployer" "164.132.103.245:22" "$SSH_PRIVATE_KEY" "ls ./; cp -r ./dist/ /uxui/"
