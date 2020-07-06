@@ -39,7 +39,6 @@ jobs:
           name: dist
           path: dist/
 
-
       - name: Add and Commit changes to master
         run: |
           git config --local user.email 'action@github.com'
