@@ -34,7 +34,7 @@ jobs:
 #          echo "Build successful"
 
       - name: Make destination directory for compiled CSS
-        run: mkdir -vp /tmp/ux_ui/dist/css
+        run: mkdir -vp /tmp/ux_ui/dist
 
       - name: Compile CSS from SCSS files
         uses: gha-utilities/sass-build@v0.2.5
@@ -48,14 +48,8 @@ jobs:
           source: scss/darkRed.scss
           destination: /tmp/ux_ui/dist/darkRed.css
 
-      - name: Move compiled CSS to path within pr-pages branch
-        run: mv /tmp/ux_ui/dist/css dist/
-
-#      - name: Copy prod to dist artifact
-#        uses: actions/upload-artifact@v1
-#        with:
-#          name: dist
-#          path: dist/
+      - name: Move compiled CSS to path
+        run: mv /tmp/ux_ui/dist dist/
 
       - name: Add and Commit changes to master
         run: |
