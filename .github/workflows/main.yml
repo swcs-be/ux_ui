@@ -24,15 +24,6 @@ jobs:
         with:
           node-version: '10.x'
 
-      # Runs a set of commands using the runners shell
-#      - name: Run a multi-line script
-#        run: |
-#          echo echo "Building..."
-#          npm install
-#          npm install node-sass
-#          npm run build:sass
-#          echo "Build successful"
-
       - name: Make destination directory for compiled CSS
         run: mkdir -vp /tmp/ux_ui/dist
 
@@ -61,7 +52,7 @@ jobs:
         run: |
           git config --local user.email 'action@github.com'
           git config --local user.name 'GitHub Action'
-          git add .
+          git add -A
           git commit -m 'Updates compiled CSS files'
 
       - name: Push changes
