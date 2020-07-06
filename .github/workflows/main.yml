@@ -47,7 +47,7 @@ jobs:
         run: mkdir dist/
 
       - name: Move compiled CSS to path
-        run: mv /tmp/ux_ui dist/
+        run: mv /tmp/ux_ui/* dist/
 
       - uses: stefanzweifel/git-auto-commit-action@v4
         with:
