@@ -40,6 +40,28 @@ jobs:
           path: dist/
 
 
+      - name: Add and Commit changes to master
+        run: |
+          git config --local user.email 'action@github.com'
+          git config --local user.name 'GitHub Action'
+          git add dist/*
+          git commit -m 'Updates compiled CSS files'
+
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: master
+
+      - name: Initialize Pull Request
+        uses: gha-utilities/init-pull-request@v0.0.4
+        with:
+          pull_request_token: ${{ secrets.GITHUB_TOKEN }}
+#          head: pr-pages
+#          base: gh-pages
+          title: 'Updates site files from latest Actions build'
+          body: >
+            Build CSS
 
 #      - name: Archive code coverage results
 #        uses: actions/upload-artifact@v1
