@@ -48,6 +48,12 @@ jobs:
           source: scss/darkRed.scss
           destination: /tmp/ux_ui/dist/darkRed.css
 
+      - name: RM old dist
+        run: rm dist/ -r
+
+      - name: mkdir dist
+        run: mkdir dist/
+
       - name: Move compiled CSS to path
         run: mv /tmp/ux_ui/dist dist/
 
