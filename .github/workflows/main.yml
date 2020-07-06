@@ -68,13 +68,5 @@ jobs:
       env:
         SLACK_CHANNEL: test
         SLACK_COLOR: '#3278BD'
-#        SLACK_ICON: https://github.com/rtCamp.png?size=48
-#        SLACK_MESSAGE: 'Post Content :rocket:'
-#        SLACK_TITLE: Post Title
         SLACK_USERNAME: Github bot
         SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
-#      - name: Archive code coverage results
-#        uses: actions/upload-artifact@v1
-#        with:
-#          name: code-coverage-report
-#          path: output/test/code-coverage.html
