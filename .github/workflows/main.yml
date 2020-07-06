@@ -26,19 +26,19 @@ jobs:
           node-version: '10.x'
 
       - name: Make destination directory for compiled CSS
-        run: mkdir -vp /tmp/ux_ui/dist
+        run: mkdir -vp /tmp/ux_ui
 
       - name: Compile CSS from SCSS files
         uses: gha-utilities/sass-build@v0.2.5
         with:
           source: scss/lightRed.scss
-          destination: /tmp/ux_ui/dist/lightRed.css
+          destination: /tmp/ux_ui/lightRed.css
 
       - name: Compile CSS from SCSS files
         uses: gha-utilities/sass-build@v0.2.5
         with:
           source: scss/darkRed.scss
-          destination: /tmp/ux_ui/dist/darkRed.css
+          destination: /tmp/ux_ui/darkRed.css
 
       - name: RM old dist
         run: rm dist/ -r
@@ -47,7 +47,7 @@ jobs:
         run: mkdir dist/
 
       - name: Move compiled CSS to path
-        run: mv /tmp/ux_ui/dist dist/
+        run: mv /tmp/ux_ui dist/
 
       - uses: stefanzweifel/git-auto-commit-action@v4
         with:
