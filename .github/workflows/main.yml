@@ -25,19 +25,37 @@ jobs:
           node-version: '10.x'
 
       # Runs a set of commands using the runners shell
-      - name: Run a multi-line script
-        run: |
-          echo echo "Building..."
-          npm install
-          npm install node-sass
-          npm run build:sass
-          echo "Build successful"
+#      - name: Run a multi-line script
+#        run: |
+#          echo echo "Building..."
+#          npm install
+#          npm install node-sass
+#          npm run build:sass
+#          echo "Build successful"
 
-      - name: Copy prod to dist artifact
-        uses: actions/upload-artifact@v1
+      - name: Make destination directory for compiled CSS
+        run: mkdir -vp /tmp/ux_ui/dist/css
+
+      - name: Compile CSS from SCSS files
+        uses: gha-utilities/sass-build@v0.2.5
         with:
-          name: dist
-          path: dist/
+          source: scss/lightRed.scss
+          destination: /tmp/ux_ui/dist/lightRed.css
+
+      - name: Compile CSS from SCSS files
+        uses: gha-utilities/sass-build@v0.2.5
+        with:
+          source: scss/darkRed.scss
+          destination: /tmp/ux_ui/dist/darkRed.css
+
+      - name: Move compiled CSS to path within pr-pages branch
+        run: mv /tmp/ux_ui/dist/css dist/
+
+#      - name: Copy prod to dist artifact
+#        uses: actions/upload-artifact@v1
+#        with:
+#          name: dist
+#          path: dist/
 
       - name: Add and Commit changes to master
         run: |
