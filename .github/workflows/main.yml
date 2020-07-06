@@ -72,10 +72,10 @@ jobs:
           body: >
             Build CSS
 
-      - name: Slack Notification
-        uses: rtCamp/action-slack-notify@v2.0.2
-        env:
-          SLACK_CHANNEL: test
-          SLACK_COLOR: '#3278BD'
-          SLACK_USERNAME: Github bot
-          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+#      - name: Slack Notification
+#        uses: rtCamp/action-slack-notify@v2.0.2
+#        env:
+#          SLACK_CHANNEL: test
+#          SLACK_COLOR: '#3278BD'
+#          SLACK_USERNAME: Github bot
+#          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
