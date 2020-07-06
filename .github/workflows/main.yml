@@ -61,7 +61,7 @@ jobs:
         run: |
           git config --local user.email 'action@github.com'
           git config --local user.name 'GitHub Action'
-          git add dist/*
+          git add .
           git commit -m 'Updates compiled CSS files'
 
       - name: Push changes
