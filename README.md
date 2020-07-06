@@ -1,7 +1,7 @@
-#TO TEST
+# TO TEST
 `docker run -dit --name uxui_swcs -p 8088:80 -v <Your Path>:/usr/local/apache2/htdocs/ httpd:2.4`
 
-#To Run Github Actions
+# To Run Github Actions
 POST TO   
 `https://api.github.com/repos/swcs-be/ux_ui/dispatches`  
 
