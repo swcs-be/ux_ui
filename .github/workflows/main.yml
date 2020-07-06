@@ -33,7 +33,7 @@ jobs:
           npm run build:sass
           echo "Build successful"
 
-      - name: Copy prod to dist
+      - name: Copy prod to dist artifact
         uses: actions/upload-artifact@v1
         with:
           name: dist
