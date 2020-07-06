@@ -49,26 +49,34 @@ jobs:
       - name: Move compiled CSS to path
         run: mv /tmp/ux_ui/dist dist/
 
-      - name: Add and Commit changes to master
-        run: |
-          git config --local user.email 'action@github.com'
-          git config --local user.name 'GitHub Action'
-          git add -A
-          git commit -m 'Updates compiled CSS files'
-
-      - name: Push changes
-        uses: ad-m/github-push-action@master
+      - uses: stefanzweifel/git-auto-commit-action@v4
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          branch: master
+          commit_message: Build CSS
+          file_pattern: dist/*.css
+          commit_user_name: Github Bot
+          commit_user_email: githubbot@swcs.be
+          commit_author: Github Bot
 
-      - name: Initialize Pull Request
-        uses: gha-utilities/init-pull-request@v0.0.4
-        with:
-          pull_request_token: ${{ secrets.GITHUB_TOKEN }}
-          title: 'Updates site files from latest Actions build'
-          body: >
-            Build CSS
+#      - name: Add and Commit changes to master
+#        run: |
+#          git config --local user.email 'action@github.com'
+#          git config --local user.name 'GitHub Action'
+#          git add -A
+#          git commit -m 'Updates compiled CSS files'
+#
+#      - name: Push changes
+#        uses: ad-m/github-push-action@master
+#        with:
+#          github_token: ${{ secrets.GITHUB_TOKEN }}
+#          branch: master
+#
+#      - name: Initialize Pull Request
+#        uses: gha-utilities/init-pull-request@v0.0.4
+#        with:
+#          pull_request_token: ${{ secrets.GITHUB_TOKEN }}
+#          title: 'Updates site files from latest Actions build'
+#          body: >
+#            Build CSS
 
 #      - name: Slack Notification
 #        uses: rtCamp/action-slack-notify@v2.0.2
