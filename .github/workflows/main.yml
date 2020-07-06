@@ -41,7 +41,7 @@ jobs:
           destination: /tmp/ux_ui/darkRed.css
 
       - name: RM old dist
-        run: rm dist/ -r
+        run: rm dist/ -rf
 
       - name: mkdir dist
         run: mkdir dist/
