@@ -40,6 +40,12 @@ jobs:
           source: scss/darkRed.scss
           destination: /tmp/ux_ui/darkRed.css
 
+      - name: Compile CSS from SCSS files
+        uses: gha-utilities/sass-build@v0.2.5
+        with:
+          source: scss/lightRedSP2020.scss
+          destination: /tmp/ux_ui/lightRedSP2020.css
+
       - name: RM old dist
         run: rm dist/ -rf
 
