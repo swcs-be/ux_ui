@@ -1,0 +1,92 @@
+# This is a basic workflow to help you get started with Actions
+name: CI_Manual
+
+# Controls when the action will run. Triggers the workflow on push or pull request
+# events but only for the master branch
+on:
+  repository_dispatch:
+    branches: [ master ]
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - name: Checkout destination Git master
+        uses: actions/checkout@v2
+
+      - name: Setup Node
+        uses: actions/setup-node@v1
+        with:
+          node-version: '10.x'
+
+      - name: Make destination directory for compiled CSS
+        run: mkdir -vp /tmp/ux_ui
+
+      - name: Compile CSS from SCSS files
+        uses: gha-utilities/sass-build@v0.2.5
+        with:
+          source: scss/lightRed.scss
+          destination: /tmp/ux_ui/lightRed.css
+
+      - name: Compile CSS from SCSS files
+        uses: gha-utilities/sass-build@v0.2.5
+        with:
+          source: scss/darkRed.scss
+          destination: /tmp/ux_ui/darkRed.css
+
+      - name: Compile CSS from SCSS files
+        uses: gha-utilities/sass-build@v0.2.5
+        with:
+          source: scss/lightRedSP2020.scss
+          destination: /tmp/ux_ui/lightRedSP2020.css
+
+      - name: RM old dist
+        run: rm dist/ -rf
+
+      - name: mkdir dist
+        run: mkdir dist/
+
+      - name: Move compiled CSS to path
+        run: mv /tmp/ux_ui/* dist/
+
+      - uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: Build CSS
+          file_pattern: dist/*.css
+          commit_user_name: Github Bot
+          commit_user_email: githubbot@swcs.be
+
+#      - name: Add and Commit changes to master
+#        run: |
+#          git config --local user.email 'action@github.com'
+#          git config --local user.name 'GitHub Action'
+#          git add -A
+#          git commit -m 'Updates compiled CSS files'
+#
+#      - name: Push changes
+#        uses: ad-m/github-push-action@master
+#        with:
+#          github_token: ${{ secrets.GITHUB_TOKEN }}
+#          branch: master
+#
+#      - name: Initialize Pull Request
+#        uses: gha-utilities/init-pull-request@v0.0.4
+#        with:
+#          pull_request_token: ${{ secrets.GITHUB_TOKEN }}
+#          title: 'Updates site files from latest Actions build'
+#          body: >
+#            Build CSS
+
+#      - name: Slack Notification
+#        uses: rtCamp/action-slack-notify@v2.0.2
+#        env:
+#          SLACK_CHANNEL: test
+#          SLACK_COLOR: '#3278BD'
+#          SLACK_USERNAME: Github bot
+#          SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}

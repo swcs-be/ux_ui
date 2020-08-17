@@ -1,0 +1,22 @@
+body {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+
+  #s4-leftpanel {
+    display: none !important;
+  }
+}
+
+.s4-ca {
+  margin-left: 0px !important;
+}
+.ms-qcb-item {
+  display: list-item !important;
+}
+input {
+  margin:auto !important;
+  vertical-align: baseline !important;
+}
+*, *::before, *::after {
+  box-sizing: content-box !important;
+}
