@@ -1,0 +1,13 @@
+{
+    "directoryListing": false,
+    "unlisted": [
+        ".DS_Store",
+        ".git"
+    ],
+    "redirects": [
+        { "source": "/.*", "destination": "/404.html" },
+        { "source": "/*.*", "destination": "/404.html" },
+        { "source": "/files*", "destination": "/404.html" },
+        { "source": "/scss*", "destination": "/404.html" }
+      ]
+}
